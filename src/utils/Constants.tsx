@@ -1,11 +1,12 @@
 export enum Colors {
-    primary = '#f7ca49',
-    primary_light = '#ffe141',
+    primary = '#006BFF',
+    primary_light = '#ffffff',
     secondary = '#0d8320',
     text = '#363636',
     disabled = '#9197a6',
     border = "#d0d4dc",
-    backgroundSecondary = '#f5f6fb'
+    background = '#ffffff',
+    background_Blue = "#d8efff"
 }
 export enum Fonts {
     Regular = 'Okra-Regular',

@@ -12,13 +12,13 @@ import {
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 import HomeScreen from "@features/HomeScreen";
-import ProfileScreen from "@features/Appointments";
 import MyProfile from "@features/MyProfile";
 import { PlatformPressable } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { RFValue } from "react-native-responsive-fontsize";
 import Appointments from "@features/Appointments";
 import MyDocuments from "@features/MyDocuments";
+import { Colors } from "@utils/Constants";
 
 type MyTabBarProps = {
   state: {
@@ -39,11 +39,10 @@ type MyTabBarProps = {
 
 const Navigation: FC = () => {
   function MyTabBar({ state, descriptors, navigation }: MyTabBarProps) {
-    const { colors } = useTheme();
     const { buildHref } = useLinkBuilder();
 
     return (
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row" ,  borderRadius: 35 }}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const label =
@@ -83,16 +82,31 @@ const Navigation: FC = () => {
               testID={options.tabBarButtonTestID}
               onPress={onPress}
               onLongPress={onLongPress}
-              style={{ flex: 1 }}
+              style={{ flex: 1, borderRadius: 35 }}
             >
-              <Text style={{ color: isFocused ? colors.primary : colors.text }}>
-                <Icon
-                  name={label}
-                //   color="#006BFF"
-                  style={{ margin: 10 }}
-                  size={RFValue(30)}
-                />
-              </Text>
+              <View
+                style={{
+                  margin: 15,
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignSelf: "auto",
+                  alignItems: "center",
+                 
+                }}
+              >
+                <Text
+                  style={{
+                    color: isFocused ? Colors.primary : Colors.disabled, borderRadius: 25,
+                  }}
+                >
+                  <Icon
+                    name={label}
+                    //   color="#006BFF"
+                    style={{ margin: 30 }}
+                    size={RFValue(25)}
+                  />
+                </Text>
+              </View>
             </PlatformPressable>
           );
         })}
